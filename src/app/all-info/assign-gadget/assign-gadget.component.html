@@ -1,0 +1,115 @@
+
+<ul class="nav justify-content-around p-5">
+  <li class="nav-item">
+    <a class="nav-link fs-4" [class.active]="viewMode=='create'" aria-current="page" (click)="viewMode = 'create'">Inserisci Lavoratore</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link fs-4" [class.active]="viewMode=='gadget'" (click)="viewMode = 'gadget'">Inserisci Dispositivo</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link fs-4" [class.active]="viewMode=='assign'" (click)="viewMode = 'assign'">Assegna Dispositivo</a>
+  </li>
+</ul>
+
+<div [ngSwitch]="viewMode" class="text-center">
+  <div *ngSwitchCase="'create'">
+     <form [formGroup]="myForm" (ngSubmit)="onCreatePost()">
+      <div>
+        <h2 class="fs-3 text-danger">Dati Lavoratore</h2>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput formControlName="name" placeholder="enter username">
+
+            <mat-error *ngIf="myForm.get('name')?.hasError('required')">
+             Nome <strong>richiesta</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Cognome</mat-label>
+            <input type="text" matInput formControlName="surname" placeholder="enter username">
+
+            <mat-error *ngIf="myForm.get('surname')?.hasError('required')">
+              Cognome <strong> richiesta</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username" placeholder="enter username">
+
+            <mat-error *ngIf="myForm.get('username')?.hasError('required')">
+              Username<strong> richiesta</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Mansione</mat-label>
+            <input type="text" matInput formControlName="mansion" placeholder="enter username">
+
+            <mat-error *ngIf="myForm.get('mansion')?.hasError('required')">
+             Mansione<strong> richiesta</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="enter username">
+
+            <mat-error *ngIf="myForm.get('email')?.hasError('required')">
+             Email<strong> richiesta</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </div>
+      <mat-dialog-actions align="center">
+        <button class="text-black fs-4" mat-button mat-dialog-close>Reset</button>
+        <button class="text-black fs-4" type="submit"mat-button cdkFocusInitial>Crea</button>
+      </mat-dialog-actions>
+     </form>
+     <div class="errormsg">
+      <mat-error *ngIf="error">{{ error }}</mat-error>
+      <mat-card *ngIf="success" class="success-card">
+        <mat-card-content>
+          <p class="success-message">{{ success }}</p>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+    <div *ngIf="!isSendPost">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+  <div *ngSwitchCase="'gadget'">
+     <p>dg </p>
+     <p>drg</p>
+  </div>
+
+  <div *ngSwitchCase="'assign'">
+    <p>dgssss </p>
+    <p>drgssss</p>
+ </div>
+</div>
