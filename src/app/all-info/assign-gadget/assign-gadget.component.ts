@@ -59,18 +59,13 @@ export class AssignGadgetComponent {
 
         if(this. workerData !== null && this. workerData !== undefined)
 
-        this.workServ.create(this. workerData).subscribe((response)=>{
-        console.log(response);
-        alert('lavoratore creato')
-          this.myForm.reset();
-        },
-        (error)=>{
-          this.handleServiceError(error);
-          console.log(error);
-        }
-        )
+        this.workServ.create(this. workerData).subscribe({
+          next:(response)=>console.log(response),
+          error:(e)=>this.handleServiceError(e)
 
-    }
+        })
+
+      }
   }
 
 
@@ -78,7 +73,7 @@ handleServiceError(error: any) {
   console.log(error);
 
      this.error = error;
-     //this.customError = error.message;
+
      ;
 
  }

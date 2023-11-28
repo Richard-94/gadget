@@ -60,7 +60,7 @@ import { ContentComponent } from './home/content/content.component';
       {
         path:'content',
         component:ContentComponent,
-        canActivate:[AuthGuard]
+        //canActivate:[AuthGuard]
 
       },
       {
